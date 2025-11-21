@@ -56,27 +56,30 @@ def check_strength(password):
         feedback.append("Use at least one special character (!@#$ etc).")
 
 
-    # Now I print the final score and give feedback
-    print("\nPassword Score:", score, "/ 7")
+        # Now I print the final score and give feedback
+    print("Password Score: " + str(score) + " / 7")     # Show score out of 7
     if score >= 6:
-        print("✅ Strong password!")
+        print("Strong password.")                       # Strong rating
     elif score >= 4:
-        print("🟡 Moderate password.")
+        print("Moderate password.")                     # Moderate rating
     else:
-        print("🔴 Weak password.")
+        print("Weak password.")                         # Weak password rating
 
     # If I found any problems, I print some tips
     if len(feedback) > 0:
-        print("\nSuggestions:")
+        print("Suggestions:")                           # Header for tips
         for tip in feedback:
-            print(" -", tip)
+            print(" - " + tip)                          # Print each suggestion
 
-    return score
+    return score                                        # Return score to caller
+
 
 # This part keeps asking until the password is strong enough
-while True:
-    user_password = input("Enter a password to check: ")
-    result = check_strength(user_password)
-    if result >= 6:
-        break  # if it's strong, I stop asking
-    print("\nPlease try again with a stronger password.\n")
+while True:                                             # Infinite loop until break
+    user_password = input("Enter a password to check: ")  
+                                                        # Ask user for password
+    result = check_strength(user_password)              # Call function and get score
+    if result >= 6:                                     # If score is strong enough...
+        break                                           # Exit loop
+    print("Please try again with a stronger password.") 
+                                                        # Ask user to improve password
