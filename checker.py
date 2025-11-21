@@ -55,22 +55,6 @@ def check_strength(password):
     else:
         feedback.append("Use at least one special character (!@#$ etc).")
 
-    # Trying to make sure the password isn’t something super basic or common
-    try:
-        f = open("common_passwords.txt", "r")
-        common_passwords = []
-        for line in f:
-            common_passwords.append(line.strip())
-        f.close()
-
-        if password.lower() in common_passwords:
-            score -= 2  # I take away points if it’s a common password
-            if score < 0:
-                score = 0
-            feedback.append("Password is too common. Choose something more unique.")
-    except:
-        # If the file isn’t there, I just skip this part
-        feedback.append("Couldn't check for common passwords (file missing).")
 
     # Now I print the final score and give feedback
     print("\nPassword Score:", score, "/ 7")
