@@ -1,3 +1,8 @@
+# Ground rules: password should be atleast 8 characters, 1 uppercase character, atleast 1 number, 1 special character, 1 lowercase character
+# A password score of max of 6?
+# provide suggestions just like a actual password checker 
+
+
 def check_strength(password):
     score = 0
     feedback = []
@@ -21,7 +26,7 @@ def check_strength(password):
     else:
         feedback.append("Add at least one uppercase letter.")
 
-    # Now I'm checking for a small (lowercase) letter
+    # Now I'm checking for a lowercase letter
     has_lower = False
     for char in password:
         if char.islower():
@@ -57,29 +62,30 @@ def check_strength(password):
 
 
         # Now I print the final score and give feedback
-    print("Password Score: " + str(score) + " / 7")     # Show score out of 7
+    print("Password Score: " + str(score) + " / 6")     # Show score out of 6
     if score >= 6:
-        print("Strong password.")                       # Strong rating
+        print("Strong password.")                      
     elif score >= 4:
-        print("Moderate password.")                     # Moderate rating
+        print("Moderate password.")                  
     else:
-        print("Weak password.")                         # Weak password rating
+        print("Weak password.")                         
 
-    # If I found any problems, I print some tips
+    # If I found any problems I could maybe print some tips to the user
     if len(feedback) > 0:
-        print("Suggestions:")                           # Header for tips
+        print("Suggestions:")                          
         for tip in feedback:
-            print(" - " + tip)                          # Print each suggestion
+            print(" - " + tip)                       
 
-    return score                                        # Return score to caller
+    return score                                     
+#successs!!!!!!!!
 
-
-# This part keeps asking until the password is strong enough
-while True:                                             # Infinite loop until break
+#phase 2 keep asking the user to enter a proper password until they get a perfect score 
+while True:                                             
     user_password = input("Enter a password to check: ")  
-                                                        # Ask user for password
-    result = check_strength(user_password)              # Call function and get score
-    if result >= 6:                                     # If score is strong enough...
-        break                                           # Exit loop
+                                                        
+    result = check_strength(user_password)              
+    if result >= 6:                                     
+        break                                           
     print("Please try again with a stronger password.") 
-                                                        # Ask user to improve password
+                                                       
+# sucesss!!!!!!!!!!
